@@ -69,7 +69,7 @@ void Config::initialize(std::string rootname)
 {
 	if (!self) {
 		XMLDocument* doc = XMLDocument::createDocument(rootname);
-		self = doc->getRootNode();		
+		self = doc->getRootNode();
 		_doc = doc;
 	}
 }
@@ -172,6 +172,9 @@ void ConfigStackCheck<T>::markOptionParsed(const std::string& nodeName)
 }
 
 
+namespace astra
+{
+
 template class ConfigStackCheck<CAlgorithm>;
 template class ConfigStackCheck<CProjectionGeometry2D>;
 template class ConfigStackCheck<CProjectionGeometry3D>;
@@ -180,3 +183,4 @@ template class ConfigStackCheck<CVolumeGeometry3D>;
 template class ConfigStackCheck<CProjector2D>;
 template class ConfigStackCheck<CProjector3D>;
 
+}

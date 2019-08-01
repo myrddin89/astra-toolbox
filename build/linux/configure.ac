@@ -32,6 +32,7 @@ SAVED_CXXFLAGS="$CXXFLAGS"
 SAVED_NVCCFLAGS="$NVCCFLAGS"
 SAVED_LDFLAGS="$LDFLAGS"
 SAVED_LIBS="$LIBS"
+#CFLAGS="-I/usr/local/include -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk"
 
 AC_CANONICAL_BUILD
 AC_CANONICAL_HOST
@@ -257,8 +258,10 @@ AC_SUBST(HAVEPYTHON)
 AC_CANONICAL_HOST
 case $host_os in
   darwin* )
-        CXXFLAGS_OS="-stdlib=libstdc++ -mmacosx-version-min=10.6"
-        LDFLAGS_OS="-stdlib=libstdc++"
+        #CXXFLAGS_OS="-stdlib=libstdc++ -mmacosx-version-min=10.6"
+        #LDFLAGS_OS="-stdlib=libstdc++"
+        CXXFLAGS_OS="-I/usr/local/include -I/usr/local/lib/python3.7/site-packages/numpy/core/include -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk -stdlib=libc++ -std=gnu++17 -mmacosx-version-min=10.12"
+        LDFLAGS_OS="-stdlib=libc++ -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
         IS_MACOS=yes
         ;;
     *)
